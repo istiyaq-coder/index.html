@@ -1,0 +1,42 @@
+[
+  {
+    "id": "r1",
+    "name": "Industrial Robot Arm (6-DoF)",
+    "description": "Payload 5kg, includes maintenance.",
+    "category": "Robotics",
+    "price": 9500,
+    "vendor_id": "v7",
+    "vendor_name": "RoboWorks",
+    "city": "Mumbai"
+  },
+  {
+    "id": "r2",
+    "name": "Drone (Survey Grade)",
+    "description": "RTK capable, mapping software included.",
+    "category": "Drones",
+    "price": 7500,
+    "vendor_id": "v9",
+    "vendor_name": "AeroMap",
+    "city": "Hyderabad"
+  },
+  {
+    "id": "r3",
+    "name": "Oscilloscope 1GHz",
+    "description": "Calibrated test equipment for labs.",
+    "category": "Test & Measurement",
+    "price": 2200,
+    "vendor_id": "v10",
+    "vendor_name": "LabRent",
+    "city": "Chennai"
+  },
+  {
+    "id": "r4",
+    "name": "3D Printer (Industrial)",
+    "description": "Large build volume, composite-ready.",
+    "category": "Fabrication",
+    "price": 6800,
+    "vendor_id": "v11",
+    "vendor_name": "PrintForge",
+    "city": "Pune"
+  }
+]

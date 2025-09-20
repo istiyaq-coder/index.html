@@ -1,0 +1,56 @@
+[
+  {
+    "id": "s1",
+    "name": "Custom Computer Vision (Edge)",
+    "description": "Deploy CV on Jetson/CPU for real-time analytics.",
+    "category": "AI/ML",
+    "price": 35000,
+    "vendor_id": "v5",
+    "vendor_name": "Visionary Labs",
+    "city": "Bengaluru",
+    "tags": [
+      "cv",
+      "edge"
+    ]
+  },
+  {
+    "id": "s2",
+    "name": "IoT Platform Integration",
+    "description": "End-to-end integration with dashboards.",
+    "category": "IoT",
+    "price": 28000,
+    "vendor_id": "v6",
+    "vendor_name": "ByteBridge",
+    "city": "Pune",
+    "tags": [
+      "iot",
+      "platform"
+    ]
+  },
+  {
+    "id": "s3",
+    "name": "Robotics Consulting",
+    "description": "Industrial robotics deployment & tuning.",
+    "category": "Robotics",
+    "price": 60000,
+    "vendor_id": "v7",
+    "vendor_name": "RoboWorks",
+    "city": "Mumbai",
+    "tags": [
+      "robotics"
+    ]
+  },
+  {
+    "id": "s4",
+    "name": "Custom ERP Module",
+    "description": "Tailored workflows for SMEs.",
+    "category": "Software Dev",
+    "price": 45000,
+    "vendor_id": "v8",
+    "vendor_name": "DevCraft",
+    "city": "Delhi",
+    "tags": [
+      "erp"
+    ]
+  }
+]

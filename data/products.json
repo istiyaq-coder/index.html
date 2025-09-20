@@ -1,0 +1,103 @@
+[
+  {
+    "id": "p1",
+    "name": "Raspberry Pi 5 (8GB) - Bulk Pack",
+    "description": "Latest gen SBC for labs and prototyping.",
+    "category": "Electronics",
+    "price": 8500,
+    "vendor_id": "v1",
+    "vendor_name": "ElectroKart",
+    "tags": [
+      "sbc",
+      "lab"
+    ]
+  },
+  {
+    "id": "p2",
+    "name": "Industrial WiFi Module",
+    "description": "Rugged IoT connectivity for factories.",
+    "category": "Components",
+    "price": 4200,
+    "vendor_id": "v2",
+    "vendor_name": "IndusTech",
+    "tags": [
+      "wifi",
+      "iot"
+    ]
+  },
+  {
+    "id": "p3",
+    "name": "NVIDIA RTX 4070 GPU",
+    "description": "Accelerated computing for AI workloads.",
+    "category": "Hardware",
+    "price": 54000,
+    "vendor_id": "v3",
+    "vendor_name": "ComputeMax",
+    "tags": [
+      "gpu",
+      "ml"
+    ]
+  },
+  {
+    "id": "p4",
+    "name": "Autodesk Fusion 360 EDU",
+    "description": "Educational seats (bulk pricing).",
+    "category": "Software",
+    "price": 1800,
+    "vendor_id": "v4",
+    "vendor_name": "SoftServe",
+    "tags": [
+      "cad"
+    ]
+  },
+  {
+    "id": "p5",
+    "name": "Arduino Sensor Kit",
+    "description": "Bundle for embedded training.",
+    "category": "Electronics",
+    "price": 2300,
+    "vendor_id": "v1",
+    "vendor_name": "ElectroKart",
+    "tags": [
+      "arduino",
+      "education"
+    ]
+  },
+  {
+    "id": "p6",
+    "name": "Server Grade SSD 2TB",
+    "description": "High endurance NVMe for data centers.",
+    "category": "Hardware",
+    "price": 13500,
+    "vendor_id": "v3",
+    "vendor_name": "ComputeMax",
+    "tags": [
+      "storage"
+    ]
+  },
+  {
+    "id": "p7",
+    "name": "LiDAR Module (Industrial)",
+    "description": "High-precision mapping and robotics.",
+    "category": "Components",
+    "price": 96000,
+    "vendor_id": "v2",
+    "vendor_name": "IndusTech",
+    "tags": [
+      "lidar",
+      "robotics"
+    ]
+  },
+  {
+    "id": "p8",
+    "name": "MS Office 365 Business",
+    "description": "Annual licenses with volume discount.",
+    "category": "Software",
+    "price": 5200,
+    "vendor_id": "v4",
+    "vendor_name": "SoftServe",
+    "tags": [
+      "office"
+    ]
+  }
+]

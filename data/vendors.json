@@ -1,0 +1,112 @@
+[
+  {
+    "id": "v1",
+    "name": "ElectroKart",
+    "city": "Ahmedabad",
+    "rating": 4.6,
+    "verified": true,
+    "email": "sales@electrokart.in",
+    "phone": "+91 90990 90990",
+    "bio": "Bulk electronics distributor for education & R&D."
+  },
+  {
+    "id": "v2",
+    "name": "IndusTech",
+    "city": "Pune",
+    "rating": 4.3,
+    "verified": true,
+    "email": "hello@industech.co",
+    "phone": "+91 80808 80808",
+    "bio": "Industrial-grade components & sensors across India."
+  },
+  {
+    "id": "v3",
+    "name": "ComputeMax",
+    "city": "Bengaluru",
+    "rating": 4.7,
+    "verified": true,
+    "email": "team@computemax.ai",
+    "phone": "+91 70707 70707",
+    "bio": "High-performance compute & storage solutions."
+  },
+  {
+    "id": "v4",
+    "name": "SoftServe",
+    "city": "Mumbai",
+    "rating": 4.2,
+    "verified": true,
+    "email": "contact@softserve.in",
+    "phone": "+91 60606 60606",
+    "bio": "Authorized software licensing partner."
+  },
+  {
+    "id": "v5",
+    "name": "Visionary Labs",
+    "city": "Bengaluru",
+    "rating": 4.8,
+    "verified": true,
+    "email": "info@visionarylabs.ai",
+    "phone": "+91 50505 50505",
+    "bio": "Edge AI & computer vision solutions."
+  },
+  {
+    "id": "v6",
+    "name": "ByteBridge",
+    "city": "Pune",
+    "rating": 4.5,
+    "verified": true,
+    "email": "hi@bytebridge.io",
+    "phone": "+91 40404 40404",
+    "bio": "IoT platforms, connectivity & dashboards."
+  },
+  {
+    "id": "v7",
+    "name": "RoboWorks",
+    "city": "Mumbai",
+    "rating": 4.4,
+    "verified": true,
+    "email": "contact@roboworks.in",
+    "phone": "+91 30303 30303",
+    "bio": "Industrial robotics integration & rentals."
+  },
+  {
+    "id": "v8",
+    "name": "DevCraft",
+    "city": "Delhi",
+    "rating": 4.1,
+    "verified": true,
+    "email": "support@devcraft.dev",
+    "phone": "+91 20202 20202",
+    "bio": "Custom software for Indian SMEs."
+  },
+  {
+    "id": "v9",
+    "name": "AeroMap",
+    "city": "Hyderabad",
+    "rating": 4.3,
+    "verified": true,
+    "email": "ops@aeromap.in",
+    "phone": "+91 11111 11111",
+    "bio": "Survey drones & aerial mapping rentals."
+  },
+  {
+    "id": "v10",
+    "name": "LabRent",
+    "city": "Chennai",
+    "rating": 4.0,
+    "verified": true,
+    "email": "rent@labrent.in",
+    "phone": "+91 22222 22222",
+    "bio": "Calibrated test & measurement equipment."
+  },
+  {
+    "id": "v11",
+    "name": "PrintForge",
+    "city": "Pune",
+    "rating": 4.2,
+    "verified": true,
+    "email": "contact@printforge.in",
+    "phone": "+91 33333 33333",
+    "bio": "Industrial additive manufacturing on demand."
+  }
+]
