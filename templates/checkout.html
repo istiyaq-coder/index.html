@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold">Secure Checkout</h1>
+    <p class="text-slate-600 mt-2">Complete your order with escrow protection</p>
+  </div>
+  
+  <form method="post" id="checkoutForm" class="space-y-6">
+    <!-- Organization Details -->
+    <div class="p-6 bg-white rounded-xl border">
+      <h2 class="text-lg font-semibold mb-4">Organization Details</h2>
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">Company / Institute Name *</label>
+          <input type="text" name="company_name" id="company_name" required
+                 class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" 
+                 placeholder="e.g., ABC University">
+          <div class="error-message text-red-600 text-sm mt-1 hidden" id="company_name_error"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Contact Person *</label>
+            <input type="text" name="contact_person" id="contact_person" required
+                   class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" 
+                   placeholder="Full Name">
+            <div class="error-message text-red-600 text-sm mt-1 hidden" id="contact_person_error"></div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Department</label>
+            <input type="text" name="department" id="department"
+                   class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" 
+                   placeholder="e.g., IT Department">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Contact Information -->
+    <div class="p-6 bg-white rounded-xl border">
+      <h2 class="text-lg font-semibold mb-4">Contact Information</h2>
+      <div class="space-y-4">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Email Address *</label>
+            <input type="email" name="email" id="email" required
+                   class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" 
+                   placeholder="contact@example.com">
+            <div class="error-message text-red-600 text-sm mt-1 hidden" id="email_error"></div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Phone Number *</label>
+            <input type="tel" name="phone" id="phone" required
+                   class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" 
+                   placeholder="+91 9999999999" pattern="[+][0-9\s-]+">
+            <div class="error-message text-red-600 text-sm mt-1 hidden" id="phone_error"></div>
+          </div>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">Address</label>
+          <textarea name="address" id="address" rows="3"
+                    class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" 
+                    placeholder="Complete address for billing/shipping"></textarea>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Payment Method -->
+    <div class="p-6 bg-white rounded-xl border">
+      <h2 class="text-lg font-semibold mb-4">Payment Method</h2>
+      <div class="space-y-3">
+        <label class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+          <input type="radio" name="payment_method" value="escrow" checked class="mr-3">
+          <div class="flex-1">
+            <div class="font-medium">Secure Escrow (Recommended)</div>
+            <div class="text-sm text-slate-600">Payment held securely until delivery confirmation</div>
+          </div>
+          <div class="text-green-600 font-medium">FREE</div>
+        </label>
+        
+        <label class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+          <input type="radio" name="payment_method" value="advance" class="mr-3">
+          <div class="flex-1">
+            <div class="font-medium">Advance Payment</div>
+            <div class="text-sm text-slate-600">Direct payment to vendor (faster processing)</div>
+          </div>
+          <div class="text-slate-500 text-sm">Standard rates</div>
+        </label>
+        
+        <label class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+          <input type="radio" name="payment_method" value="purchase_order" class="mr-3">
+          <div class="flex-1">
+            <div class="font-medium">Purchase Order</div>
+            <div class="text-sm text-slate-600">Generate PO for institutional procurement</div>
+          </div>
+          <div class="text-slate-500 text-sm">Net 30</div>
+        </label>
+      </div>
+    </div>
+    
+    <!-- Special Requirements -->
+    <div class="p-6 bg-white rounded-xl border">
+      <h2 class="text-lg font-semibold mb-4">Special Requirements</h2>
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">Delivery Timeline</label>
+          <select name="delivery_timeline" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+            <option value="standard">Standard (7-14 days)</option>
+            <option value="priority">Priority (3-7 days)</option>
+            <option value="urgent">Urgent (1-3 days)</option>
+          </select>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">Additional Notes</label>
+          <textarea name="notes" id="notes" rows="3"
+                    class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" 
+                    placeholder="Any special requirements, installation needs, or delivery instructions..."></textarea>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Terms and Conditions -->
+    <div class="p-6 bg-white rounded-xl border">
+      <label class="flex items-start gap-3 cursor-pointer">
+        <input type="checkbox" name="terms_accepted" id="terms_accepted" required class="mt-1">
+        <div class="text-sm text-slate-600">
+          <p>I agree to the <a href="#" class="text-indigo-600 hover:underline">Terms and Conditions</a> and confirm that:</p>
+          <ul class="mt-2 space-y-1 text-xs pl-4 list-disc">
+            <li>All information provided is accurate</li>
+            <li>I have authority to make purchases for the organization</li>
+            <li>I understand the escrow process and payment terms</li>
+          </ul>
+        </div>
+      </label>
+      <div class="error-message text-red-600 text-sm mt-1 hidden" id="terms_error"></div>
+    </div>
+    
+    <!-- Submit Button -->
+    <div class="sticky bottom-0 bg-white p-4 border-t mt-6">
+      <button type="submit" id="submitBtn" class="w-full py-4 px-6 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center">
+        <span id="submitText">Complete Order</span>
+        <div id="submitLoader" class="hidden ml-2">
+          <div class="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+        </div>
+      </button>
+      <p class="text-center text-sm text-slate-500 mt-2">Secure checkout protected by escrow service</p>
+    </div>
+  </form>
+</section>
+
+<script>
+// Form validation and submission
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('checkoutForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const submitText = document.getElementById('submitText');
+  const submitLoader = document.getElementById('submitLoader');
+  
+  // Validation functions
+  function validateField(fieldId, validator, errorMessage) {
+    const field = document.getElementById(fieldId);
+    const error = document.getElementById(fieldId + '_error');
+    
+    if (field && validator(field.value)) {
+      field.classList.remove('border-red-500');
+      error.classList.add('hidden');
+      return true;
+    } else {
+      field.classList.add('border-red-500');
+      error.textContent = errorMessage;
+      error.classList.remove('hidden');
+      return false;
+    }
+  }
+  
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+  
+  function validatePhone(phone) {
+    return /^[+][0-9\s-]{10,}$/.test(phone);
+  }
+  
+  // Real-time validation
+  document.getElementById('email').addEventListener('blur', function() {
+    validateField('email', validateEmail, 'Please enter a valid email address');
+  });
+  
+  document.getElementById('phone').addEventListener('blur', function() {
+    validateField('phone', validatePhone, 'Please enter a valid phone number (e.g., +91 9999999999)');
+  });
+  
+  // Form submission
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Validate all fields
+    let isValid = true;
+    
+    isValid &= validateField('company_name', val => val.trim().length >= 2, 'Company name must be at least 2 characters');
+    isValid &= validateField('contact_person', val => val.trim().length >= 2, 'Contact person name is required');
+    isValid &= validateField('email', validateEmail, 'Please enter a valid email address');
+    isValid &= validateField('phone', validatePhone, 'Please enter a valid phone number');
+    
+    // Validate terms
+    const termsCheckbox = document.getElementById('terms_accepted');
+    const termsError = document.getElementById('terms_error');
+    if (!termsCheckbox.checked) {
+      termsError.textContent = 'Please accept the terms and conditions';
+      termsError.classList.remove('hidden');
+      isValid = false;
+    } else {
+      termsError.classList.add('hidden');
+    }
+    
+    if (!isValid) {
+      return;
+    }
+    
+    // Show loading state
+    submitBtn.disabled = true;
+    submitText.textContent = 'Processing...';
+    submitLoader.classList.remove('hidden');
+    
+    // Simulate processing delay
+    setTimeout(() => {
+      form.submit();
+    }, 1000);
+  });
+});
+</script>
+{% endblock %}

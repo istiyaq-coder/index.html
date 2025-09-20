@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="max-w-md mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <h1 class="text-3xl font-bold">Contact Us</h1>
+  <form method="post" class="mt-6 space-y-3">
+    <input class="w-full border rounded-lg p-3" placeholder="Your Name">
+    <input class="w-full border rounded-lg p-3" placeholder="Email">
+    <textarea class="w-full border rounded-lg p-3" placeholder="Message" rows="5"></textarea>
+    <button class="w-full py-3 rounded-xl bg-indigo-600 text-white">Send</button>
+  </form>
+</section>
+{% endblock %}

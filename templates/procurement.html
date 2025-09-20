@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <h1 class="text-3xl font-bold">Bulk Tech Procurement</h1>
+      <p class="text-slate-600">Aggregate catalog, smart comparison, and institution-ready workflows.</p>
+    </div>
+    <form class="grid md:grid-cols-5 gap-2">
+      <input class="border rounded-lg p-2 md:col-span-2" type="text" name="q" value="{{ request.args.get('q','') }}" placeholder="Search products">
+      <select class="border rounded-lg p-2" name="category">
+        <option value="all">All categories</option>
+        {% for c in categories %}
+        <option value="{{c}}" {% if request.args.get('category')==c %}selected{% endif %}>{{c}}</option>
+        {% endfor %}
+      </select>
+      <input class="border rounded-lg p-2" type="number" step="100" name="min_price" value="{{ request.args.get('min_price','') }}" placeholder="Min ₹">
+      <input class="border rounded-lg p-2" type="number" step="100" name="max_price" value="{{ request.args.get('max_price','') }}" placeholder="Max ₹">
+      <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg">Filter</button>
+    </form>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6 mt-8">
+    {% for p in items %}
+      {% set p = p %}
+      {% include "partials/card_product.html" %}
+    {% else %}
+      <div class="col-span-3 text-slate-500">No results. Try adjusting filters.</div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

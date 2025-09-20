@@ -1,0 +1,16 @@
+<div class="p-5 rounded-2xl border bg-white flex flex-col hover:shadow-lg transition-shadow">
+  <div class="text-xs text-slate-500">{{ p.category }}</div>
+  <div class="font-semibold text-lg">
+    <a href="{{ url_for('product_detail', product_id=p.id) }}" class="hover:text-indigo-600">{{ p.name }}</a>
+  </div>
+  <div class="text-sm text-slate-600 mt-1 line-clamp-2">{{ p.description }}</div>
+  <div class="mt-4 text-sm text-slate-500">Vendor: <a href="{{ url_for('vendor_detail', vid=p.vendor_id) }}" class="text-indigo-600 hover:underline">{{ p.vendor_name }}</a></div>
+  <div class="mt-3 font-bold">₹{{ '%.0f'|format(p.price) }}</div>
+  <div class="mt-4 flex gap-2">
+    <a href="{{ url_for('cart_add', kind='product', item_id=p.id) }}" class="px-3 py-2 rounded-lg bg-indigo-600 text-white text-sm hover:bg-indigo-700">Add to Cart</a>
+    <a href="{{ url_for('add_compare', kind='product', item_id=p.id) }}" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Compare</a>
+  </div>
+  <div class="mt-2">
+    <a href="{{ url_for('product_detail', product_id=p.id) }}" class="text-xs text-indigo-600 hover:underline">View Details →</a>
+  </div>
+</div>

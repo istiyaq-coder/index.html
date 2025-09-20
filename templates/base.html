@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TechHub India</title>
+    <!-- Tailwind via CDN for quick prototyping -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </head>
+  <body class="bg-gradient-to-b from-slate-50 to-slate-100 text-slate-800" style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;">
+    <header class="sticky top-0 z-30 bg-white/80 backdrop-blur border-b">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="{{ url_for('index') }}" class="flex items-center gap-3">
+            <img src="{{ url_for('static', filename='img/logo.svg') }}" class="h-9" alt="TechHub India">
+            <span class="font-extrabold text-xl">TechHub<span class="text-indigo-600"> India</span></span>
+          </a>
+          <nav class="hidden md:flex items-center gap-6 text-sm">
+            <a href="{{ url_for('procurement') }}" class="hover:text-indigo-600">Procurement</a>
+            <a href="{{ url_for('services') }}" class="hover:text-indigo-600">Services</a>
+            <a href="{{ url_for('rentals') }}" class="hover:text-indigo-600">Rentals</a>
+            <a href="{{ url_for('vendors') }}" class="hover:text-indigo-600">Vendors</a>
+            <a href="{{ url_for('dashboard') }}" class="hover:text-indigo-600">Insights</a>
+            <a href="{{ url_for('about') }}" class="hover:text-indigo-600">About</a>
+            <a href="{{ url_for('contact') }}" class="hover:text-indigo-600">Contact</a>
+          </nav>
+          <div class="flex items-center gap-3">
+            <div class="hidden md:flex items-center gap-3">
+              <a href="{{ url_for('compare') }}" class="relative px-3 py-1.5 rounded-full border hover:bg-slate-50">
+                Compare <span class="ml-1 inline-flex items-center justify-center text-xs font-semibold bg-slate-900 text-white rounded-full min-w-6 h-6">{{ compare_count }}</span>
+              </a>
+              <a href="{{ url_for('cart_view') }}" class="relative px-3 py-1.5 rounded-full border hover:bg-slate-50">
+                Cart <span class="ml-1 inline-flex items-center justify-center text-xs font-semibold bg-indigo-600 text-white rounded-full min-w-6 h-6">{{ cart_count }}</span>
+              </a>
+              <button id="openSearch" class="px-3 py-1.5 rounded-full bg-indigo-600 text-white hover:bg-indigo-700">Search</button>
+            </div>
+            <!-- Mobile menu button -->
+            <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="md:hidden hidden border-t bg-white">
+          <div class="py-4 space-y-3">
+            <a href="{{ url_for('procurement') }}" class="block px-4 py-2 hover:bg-gray-100">Procurement</a>
+            <a href="{{ url_for('services') }}" class="block px-4 py-2 hover:bg-gray-100">Services</a>
+            <a href="{{ url_for('rentals') }}" class="block px-4 py-2 hover:bg-gray-100">Rentals</a>
+            <a href="{{ url_for('vendors') }}" class="block px-4 py-2 hover:bg-gray-100">Vendors</a>
+            <a href="{{ url_for('dashboard') }}" class="block px-4 py-2 hover:bg-gray-100">Insights</a>
+            <a href="{{ url_for('about') }}" class="block px-4 py-2 hover:bg-gray-100">About</a>
+            <a href="{{ url_for('contact') }}" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
+            <div class="border-t pt-3 mt-3">
+              <div class="flex gap-3 px-4">
+                <a href="{{ url_for('compare') }}" class="flex-1 px-3 py-2 text-center rounded-lg border hover:bg-gray-50">
+                  Compare ({{ compare_count }})
+                </a>
+                <a href="{{ url_for('cart_view') }}" class="flex-1 px-3 py-2 text-center rounded-lg bg-indigo-600 text-white hover:bg-indigo-700">
+                  Cart ({{ cart_count }})
+                </a>
+              </div>
+              <div class="px-4 mt-3">
+                <button id="openSearchMobile" class="w-full px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="max-w-3xl mx-auto mt-4 px-4">
+          {% for category, msg in messages %}
+            <div class="p-3 rounded-lg mb-2 border {{ 'bg-green-50 border-green-200 text-green-800' if category=='success' else 'bg-amber-50 border-amber-200 text-amber-800' }}">{{ msg }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="mt-16 border-t">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="font-extrabold text-lg">TechHub India</div>
+          <p class="text-sm mt-2 text-slate-600">Your unified tech procurement & services platform.</p>
+        </div>
+        <div>
+          <div class="font-semibold mb-2">Pillars</div>
+          <ul class="space-y-1 text-sm">
+            <li><a class="hover:text-indigo-600" href="{{ url_for('procurement') }}">Bulk Procurement</a></li>
+            <li><a class="hover:text-indigo-600" href="{{ url_for('services') }}">Specialized Services</a></li>
+            <li><a class="hover:text-indigo-600" href="{{ url_for('rentals') }}">Equipment Rentals</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold mb-2">Company</div>
+          <ul class="space-y-1 text-sm">
+            <li><a class="hover:text-indigo-600" href="{{ url_for('about') }}">About</a></li>
+            <li><a class="hover:text-indigo-600" href="{{ url_for('vendors') }}">Vendor Network</a></li>
+            <li><a class="hover:text-indigo-600" href="{{ url_for('dashboard') }}">Insights</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold mb-2">Contact</div>
+          <p class="text-sm text-slate-600">support@techhub.example • Mumbai, India</p>
+        </div>
+      </div>
+      <div class="text-center text-xs text-slate-500 pb-8">© 2025 TechHub India (Prototype)</div>
+    </footer>
+
+    <!-- Search drawer -->
+    <div id="searchDrawer" class="fixed inset-0 bg-black/50 hidden z-50">
+      <div class="absolute right-0 top-0 w-full sm:w-[560px] h-full bg-white shadow-xl overflow-hidden flex flex-col">
+        <div class="flex-shrink-0 p-6 border-b bg-white">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h2 class="text-xl font-semibold">Global Search</h2>
+              <div class="text-sm text-slate-500 mt-1">Search across all products, services, and rentals</div>
+            </div>
+            <button id="closeSearch" class="p-2 hover:bg-gray-100 rounded-lg transition-colors" aria-label="Close search">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+          <div class="relative">
+            <input id="searchInput" type="text" placeholder="Search products, services, rentals..." 
+                   class="w-full border rounded-lg p-3 pr-10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" 
+                   autocomplete="off" />
+            <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 mt-2 text-xs text-slate-500">
+            <div class="flex items-center gap-1">
+              <kbd class="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">↑↓</kbd>
+              <span>navigate</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <kbd class="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">Enter</kbd>
+              <span>select</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <kbd class="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">Esc</kbd>
+              <span>close</span>
+            </div>
+          </div>
+        </div>
+        <div id="searchResults" class="flex-1 overflow-y-auto p-4 space-y-2"></div>
+      </div>
+    </div>
+  </body>
+</html>

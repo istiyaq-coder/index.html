@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <h1 class="text-3xl font-bold">Cart (Escrow Demo)</h1>
+  <div class="mt-6 space-y-4">
+    {% for i in items %}
+    <div class="p-4 rounded-xl border bg-white">
+      <div class="flex items-start justify-between">
+        <div class="flex-1">
+          <div class="text-xs uppercase text-slate-500">{{ i.kind }}</div>
+          <div class="font-semibold text-lg">{{ i.name }}</div>
+          <div class="text-sm text-slate-600 mt-1">{{ i.description }}</div>
+        </div>
+        <div class="text-right">
+          <div class="font-bold">₹{{ '%.0f'|format(i.price) }}{% if i.kind == 'rental' %}/day{% endif %}</div>
+          <div class="text-sm text-slate-500">Unit price</div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between mt-4">
+        <div class="flex items-center gap-3">
+          <label class="text-sm text-slate-600">Quantity:</label>
+          <div class="flex items-center border rounded-lg">
+            <a href="{{ url_for('cart_update', cart_index=i.cart_index, quantity=i.quantity-1) if i.quantity > 1 else '#' }}" 
+               class="px-3 py-1 hover:bg-gray-100 {{ 'text-gray-300 cursor-not-allowed' if i.quantity <= 1 else 'text-gray-700' }}">−</a>
+            <span class="px-4 py-1 border-x">{{ i.quantity }}</span>
+            <a href="{{ url_for('cart_update', cart_index=i.cart_index, quantity=i.quantity+1) }}" 
+               class="px-3 py-1 hover:bg-gray-100 text-gray-700">+</a>
+          </div>
+          <a href="{{ url_for('cart_remove', cart_index=i.cart_index) }}" 
+             class="px-3 py-1 text-red-600 hover:bg-red-50 rounded-lg text-sm"
+             onclick="return confirm('Remove this item from cart?')">Remove</a>
+        </div>
+        <div class="text-right">
+          <div class="font-bold text-lg">₹{{ '%.0f'|format(i.item_total) }}</div>
+          <div class="text-sm text-slate-500">Subtotal</div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="text-center text-slate-500 py-10">
+      <div class="text-lg">Your cart is empty</div>
+      <div class="mt-2"><a href="{{ url_for('procurement') }}" class="text-indigo-600 hover:underline">Browse products</a></div>
+    </div>
+    {% endfor %}
+  </div>
+  {% if items %}
+  <div class="mt-6 p-4 rounded-xl border bg-white">
+    <div class="flex items-center justify-between mb-4">
+      <div class="text-slate-600">Total Items: {{ items|length }}</div>
+      <a href="{{ url_for('cart_clear') }}" 
+         class="px-3 py-1 text-red-600 hover:bg-red-50 rounded-lg text-sm"
+         onclick="return confirm('Clear entire cart?')">Clear Cart</a>
+    </div>
+    <div class="flex items-center justify-between text-xl">
+      <div class="font-semibold">Total</div>
+      <div class="font-bold">₹{{ '%.0f'|format(total) }}</div>
+    </div>
+  </div>
+  <div class="mt-6 flex gap-3">
+    <a href="{{ url_for('checkout') }}" class="px-6 py-3 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 flex-1 text-center">Proceed to Checkout</a>
+    <a href="{{ url_for('procurement') }}" class="px-6 py-3 rounded-xl border hover:bg-gray-50 text-center">Continue Shopping</a>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

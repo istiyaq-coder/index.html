@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <div class="flex items-center gap-4">
+    <div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center text-xl">{{ v.name[:2] }}</div>
+    <div>
+      <h1 class="text-2xl font-bold">{{ v.name }}</h1>
+      <div class="text-sm text-slate-500">{{ v.city }} • {{ v.rating }}★ • {{ v.verified and 'Verified' or 'Unverified' }}</div>
+    </div>
+  </div>
+
+  <p class="mt-4 text-slate-700">{{ v.bio }}</p>
+
+  <div class="grid md:grid-cols-3 gap-6 mt-8">
+    <div class="md:col-span-1">
+      <div class="p-4 rounded-2xl border bg-white">
+        <div class="font-semibold">Contact</div>
+        <div class="text-sm text-slate-600 mt-1">{{ v.email }}</div>
+        <div class="text-sm text-slate-600">{{ v.phone }}</div>
+      </div>
+    </div>
+    <div class="md:col-span-2 space-y-8">
+      <div>
+        <h2 class="font-semibold mb-3">Products</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          {% for p in v_products %}
+            {% set p = p %}
+            {% include "partials/card_product.html" %}
+          {% else %}
+            <div class="text-sm text-slate-500">No products.</div>
+          {% endfor %}
+        </div>
+      </div>
+      <div>
+        <h2 class="font-semibold mb-3">Services</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          {% for s in v_services %}
+            {% include "partials/card_service.html" %}
+          {% else %}
+            <div class="text-sm text-slate-500">No services.</div>
+          {% endfor %}
+        </div>
+      </div>
+      <div>
+        <h2 class="font-semibold mb-3">Rentals</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          {% for r in v_rentals %}
+            {% include "partials/card_rental.html" %}
+          {% else %}
+            <div class="text-sm text-slate-500">No rentals.</div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
